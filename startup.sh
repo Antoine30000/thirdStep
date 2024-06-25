@@ -13,6 +13,6 @@ docker run -d --network newNetwork --name db -e MYSQL_ROOT_PASSWORD=lesupermdp -
 
 docker run -d --network newNetwork --name script -v $(pwd)/app:/app php:8.3.7-fpm bash -c "docker-php-ext-install mysqli && docker-php-ext-enable mysqli && php-fpm"
 
-docker run -p 8080:80 -d --name http -v $(pwd)/app:/app -v $(pwd)/default.conf:/etc/nginx/conf.d/default.conf --network reseau nginx:1.25
+docker run -p 8080:80 -d --name http -v $(pwd)/app:/app -v $(pwd)/default.conf:/etc/nginx/conf.d/default.conf --network newNetwork nginx:1.25
 
 docker exec -it http nginx -s reload
